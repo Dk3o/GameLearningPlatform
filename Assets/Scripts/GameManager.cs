@@ -25,4 +25,19 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("GuessWord");
     }
 
+    public void WhackALetter()
+    {
+        SceneManager.LoadScene("WhackALetter");
+    }
+
+    public void PuzzlePair()
+    {
+        SceneManager.LoadScene("PuzzlePair");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 }

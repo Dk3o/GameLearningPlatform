@@ -23,5 +23,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 3.unity
     guid: e6b87dffe84a54f4c8f1d3a3d0abfff4
+  - enabled: 1
+    path: Assets/Scenes/WhackALetter.unity
+    guid: 9ddcb37bf23d05041ae9a143ca6a6061
+  - enabled: 1
+    path: Assets/Scenes/PuzzlePair.unity
+    guid: 4613a5bb90587624cad571519109ae70
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: db0740817e5b8bb458d1522fb047d9c8, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 0d39f3fa0f4c409468d110031cdc3ae9, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 41874a3c1aaace74596912e35f5a7c99, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: d11bb559f8059e84e86a818fb772241d, type: 2}
