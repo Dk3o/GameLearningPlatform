@@ -100,7 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderer: {fileID: 5169612864800873036}
   _audioSource: {fileID: 903663248221451144}
-  _completeClip: {fileID: 0}
 --- !u!82 &903663248221451144
 AudioSource:
   m_ObjectHideFlags: 0
