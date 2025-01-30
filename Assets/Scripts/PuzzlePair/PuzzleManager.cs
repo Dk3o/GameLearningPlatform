@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -14,12 +15,29 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] private Transform _slotsParent, _pieceParent;
     [SerializeField] public int _slotCount = 3;
 
+    [SerializeField] private Image _toggleImage;
+    [SerializeField] private Sprite _autoRepeatOn, _autoRepeatOff;
+
+    [SerializeField] private GameObject stageCompleted;
+
+    private bool _isAutoRepeat;
+
     private int _placedCount = 0;
 
+    private void Awake()
+    {
+        _isAutoRepeat = PlayerPrefs.GetInt("AutoRepeat", 0) == 1;
+    }
 
     void Start()
     {
         Spawn();
+    }
+
+    void Update()
+    {
+        UpdateToggleImage();
+
     }
 
     void Spawn()
@@ -60,7 +78,14 @@ public class PuzzleManager : MonoBehaviour
         {
             // All pieces are placed
             _audioSource.PlayOneShot(_completedClip);
-            StartCoroutine(RestartGame());
+            if (_isAutoRepeat)
+            {
+                StartCoroutine(RestartGame());
+            }
+            else
+            {
+                stageCompleted.gameObject.SetActive(true); // Show the stage completed UI
+            }
         }
     }
 
@@ -69,5 +94,20 @@ public class PuzzleManager : MonoBehaviour
         Debug.Log("Game restarting...");
         yield return new WaitForSeconds(6f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload the current scene
+    }
+
+    public void IsAutoRepeat()
+    {
+        _isAutoRepeat = !_isAutoRepeat;
+        PlayerPrefs.SetInt("AutoRepeat", _isAutoRepeat ? 1 : 0); // Store the value
+        PlayerPrefs.Save();
+    }
+
+    private void UpdateToggleImage()
+    {
+        if (_toggleImage != null)
+        {
+            _toggleImage.sprite = _isAutoRepeat ? _autoRepeatOn : _autoRepeatOff;
+        }
     }
 }
